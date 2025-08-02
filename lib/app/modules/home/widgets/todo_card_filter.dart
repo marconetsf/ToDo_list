@@ -22,7 +22,7 @@ class TodoCardFilter extends StatelessWidget {
   double _getPercentFinished() {
     if (totalTasks == null) {
       return 0.0;
-    } else if (totalTasks?.totalTasks != 0){
+    } else if (totalTasks?.totalTasks != 0) {
       return ((totalTasks!.totalFinishedTasks) / (totalTasks!.totalTasks));
     } else {
       return 0.0;
@@ -35,9 +35,9 @@ class TodoCardFilter extends StatelessWidget {
       onTap: () => context.read<HomeController>().findTasks(filter: taskFilter),
       borderRadius: BorderRadius.circular(30),
       child: Container(
-        constraints: BoxConstraints(minHeight: 120, maxWidth: 150),
+        constraints: BoxConstraints(minHeight: 100, maxWidth: 150),
         margin: EdgeInsets.only(right: 10),
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 10),
         decoration: BoxDecoration(
           color: selected ? context.primaryColor : context.primaryColorLight,
           border: Border.all(
@@ -52,11 +52,10 @@ class TodoCardFilter extends StatelessWidget {
             Text(
               '${(totalTasks?.totalTasks ?? 0) - (totalTasks?.totalFinishedTasks ?? 0)} TASKS',
               style: context.titleStyle.copyWith(
-                fontSize: 12,
-                color: Colors.white,
+                fontSize: 10,
+                color: Colors.white.withAlpha(180),
               ),
             ),
-            SizedBox(height: 18),
             Text(
               label,
               style: TextStyle(
@@ -65,6 +64,7 @@ class TodoCardFilter extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
+            SizedBox(height: 15,),
             TweenAnimationBuilder<double>(
               tween: Tween(begin: 0.0, end: _getPercentFinished()),
               duration: Duration(seconds: 1),

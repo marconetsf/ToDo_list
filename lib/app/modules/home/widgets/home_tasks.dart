@@ -21,7 +21,10 @@ class HomeTasks extends StatelessWidget {
               return controller.filterSelected.description;
             },
             builder: (context, value, child) {
-              return Text('TASK\'S $value', style: context.titleStyle);
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 15),
+                child: Text('TASK\'S $value', style: context.titleStyle),
+              );
             },
           ),
           Column(
